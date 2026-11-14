@@ -418,23 +418,20 @@ main > section,
 main > .contact {
   max-width: none;
   padding-block: clamp(3rem, 7vw, 5rem);
+  /* Full-width band whose words line up with the 78rem column above. */
+  padding-inline: max(var(--edge), calc((100% - 78rem) / 2 + var(--edge)));
   background: var(--ink);
   color: #fff;
 }
 
-.contact > * {
-  max-width: calc(78rem - 2 * var(--edge));
-  margin-inline: auto;
+.contact h2,
+.contact p:not(.contact-links) {
+  max-width: 44rem;
 }
 
 .contact p:not(.contact-links) {
   margin-top: 1rem;
   color: #d0d2d4;
-}
-
-.contact h2,
-.contact p:not(.contact-links) {
-  padding-right: max(0px, calc(100% - 44rem));
 }
 
 .contact .button {
