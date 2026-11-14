@@ -6,26 +6,36 @@ const root = fileURLToPath(new URL(".", import.meta.url));
 
 const escape = (text) => String(text).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
-function project(p) {
+// Each demo wears its own colours, taken from the demo itself, so the five are easy to tell apart.
+const colours = (p) => `style="--c: ${escape(p.color)}; --on: ${escape(p.on)}"`;
+
+function project(p, i, all) {
   return `
-      <article class="project" id="${escape(p.id)}">
-        <div class="project-words">
-          <p class="project-for">For ${escape(p.for)}</p>
-          <h3>${escape(p.name)}</h3>
-          <p class="project-pitch">${escape(p.pitch)}</p>
-          <p class="project-try-title">Three things to try</p>
-          <ol class="project-try">
-            ${p.try.map((step) => `<li>${escape(step)}</li>`).join("\n            ")}
-          </ol>
-          <p class="project-note">${escape(p.note)}</p>
-          <p class="project-links">
-            <a class="button" href="${escape(p.demo)}">Open the demo<span class="visually-hidden">: ${escape(p.name)}</span></a>
-            <a class="quiet" href="${escape(p.code)}">See the code<span class="visually-hidden">: ${escape(p.name)}</span></a>
-          </p>
+      <article class="project" id="${escape(p.id)}" ${colours(p)}>
+        <header class="project-head">
+          <p class="project-num"><span class="visually-hidden">Demo </span>${i + 1}<span class="visually-hidden"> of ${all.length}</span></p>
+          <div>
+            <p class="project-for">For ${escape(p.for)}</p>
+            <h3>${escape(p.name)}</h3>
+          </div>
+        </header>
+        <div class="project-body">
+          <div class="project-words">
+            <p class="project-pitch">${escape(p.pitch)}</p>
+            <p class="project-try-title">Three things to try</p>
+            <ol class="project-try">
+              ${p.try.map((step) => `<li>${escape(step)}</li>`).join("\n              ")}
+            </ol>
+            <p class="project-note">${escape(p.note)}</p>
+            <p class="project-links">
+              <a class="button" href="${escape(p.demo)}">Open the demo<span class="visually-hidden">: ${escape(p.name)}</span></a>
+              <a class="quiet" href="${escape(p.code)}">See the code<span class="visually-hidden">: ${escape(p.name)}</span></a>
+            </p>
+          </div>
+          <a class="project-shot" href="${escape(p.demo)}" tabindex="-1" aria-hidden="true">
+            <img src="shots/${escape(p.id)}.jpg" alt="${escape(p.alt)}" loading="lazy">
+          </a>
         </div>
-        <a class="project-shot" href="${escape(p.demo)}" tabindex="-1" aria-hidden="true">
-          <img src="shots/${escape(p.id)}.jpg" alt="${escape(p.alt)}" loading="lazy">
-        </a>
       </article>`;
 }
 
@@ -55,10 +65,11 @@ export function render({ site, projects }) {
 
     <main>
       <section class="intro">
-        <h1>Working software you can click through, built for</h1>
-        <ul class="index">
-          ${projects.map((p) => `<li><a href="#${escape(p.id)}">${escape(p.for)}</a></li>`).join("\n          ")}
-        </ul>
+        <h1>Working software you can click through</h1>
+        <p class="intro-lead">Five demonstration builds, each made for one kind of office. Pick the one closest to yours.</p>
+        <ol class="index">
+          ${projects.map((p, i) => `<li><a href="#${escape(p.id)}" ${colours(p)}><span class="index-num">${i + 1}</span><span class="index-for">For ${escape(p.for)}</span><span class="index-name">${escape(p.name)}</span></a></li>`).join("\n          ")}
+        </ol>
         <p class="intro-notice"><strong>These are demonstration builds, not client work.</strong> Every firm, person and record in them is invented. Each one runs in your browser with nothing to install and no account to make.</p>
       </section>
 
