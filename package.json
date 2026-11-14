@@ -1,0 +1,15 @@
+{
+  "name": "chopmedia-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "One page linking ChopMedia's five demonstration builds.",
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "node --test",
+    "shots": "node scripts/sync-shots.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

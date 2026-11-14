@@ -1,0 +1,376 @@
+:root {
+  --paper: #f4f6f9;
+  --sheet: #ffffff;
+  --ink: #0f1d33;
+  --soft: #4d5a72;
+  --line: #d5dbe6;
+  --blue: #2242c7;
+  --blue-deep: #172f96;
+  --marker: #ffd94a;
+  --display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  --body: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --edge: clamp(1rem, 4vw, 3rem);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 1.0625rem;
+  line-height: 1.55;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+ol,
+dl,
+dd {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: var(--blue);
+  text-underline-offset: 0.18em;
+}
+
+a:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.skip {
+  position: absolute;
+  left: var(--edge);
+  top: -4rem;
+  background: var(--ink);
+  color: #fff;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+}
+
+.skip:focus {
+  top: 0.75rem;
+}
+
+.top,
+main > section,
+.foot {
+  max-width: 78rem;
+  margin-inline: auto;
+  padding-inline: var(--edge);
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-block: 1.5rem;
+}
+
+.brand {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+}
+
+.top a {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* The opening: one sentence that ends in a list of who the demos are for. */
+
+.intro {
+  padding-block: clamp(2rem, 7vw, 5.5rem) clamp(3rem, 7vw, 5rem);
+}
+
+.intro h1 {
+  font-family: var(--body);
+  font-weight: 500;
+  font-size: clamp(1.125rem, 1rem + 0.8vw, 1.5rem);
+  color: var(--soft);
+  margin-bottom: 0.75rem;
+}
+
+.index {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(1.75rem, 0.9rem + 4.4vw, 4.25rem);
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+}
+
+.index li + li {
+  margin-top: 0.14em;
+}
+
+.index a {
+  color: var(--ink);
+  text-decoration: none;
+  background: linear-gradient(var(--marker), var(--marker)) no-repeat 0 88% / 0 0.34em;
+  transition: background-size 180ms ease-out;
+}
+
+.index a:hover,
+.index a:focus-visible {
+  background-size: 100% 0.34em;
+}
+
+.intro-notice {
+  max-width: 44rem;
+  margin-top: clamp(2rem, 4vw, 3rem);
+  padding-left: 1rem;
+  border-left: 4px solid var(--marker);
+  color: var(--soft);
+}
+
+.intro-notice strong {
+  color: var(--ink);
+}
+
+/* One row per demo: the words, then the screen a customer sees. */
+
+.project {
+  display: grid;
+  gap: 1.75rem;
+  padding-block: clamp(2.5rem, 6vw, 4.5rem);
+  border-top: 1px solid var(--line);
+  scroll-margin-top: 1rem;
+}
+
+.project-for {
+  color: var(--blue);
+  font-weight: 600;
+}
+
+.project h3 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(1.75rem, 1.3rem + 1.6vw, 2.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-block: 0.25rem 0.9rem;
+}
+
+.project-pitch {
+  font-size: 1.125rem;
+  max-width: 36rem;
+}
+
+.project-try-title {
+  margin-top: 1.5rem;
+  font-weight: 600;
+}
+
+.project-try {
+  counter-reset: step;
+  margin-top: 0.5rem;
+  max-width: 36rem;
+  color: var(--soft);
+}
+
+.project-try li {
+  counter-increment: step;
+  position: relative;
+  padding-left: 1.6rem;
+}
+
+.project-try li + li {
+  margin-top: 0.4rem;
+}
+
+.project-try li::before {
+  content: counter(step) ".";
+  position: absolute;
+  left: 0;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.project-note {
+  margin-top: 1.25rem;
+  max-width: 36rem;
+  font-size: 0.9375rem;
+  color: var(--soft);
+}
+
+.project-links,
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.button {
+  display: inline-block;
+  background: var(--blue);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.8rem 1.3rem;
+  border-radius: 8px;
+}
+
+.button:hover {
+  background: var(--blue-deep);
+}
+
+.quiet {
+  color: var(--ink);
+  font-weight: 600;
+  padding-block: 0.6rem;
+}
+
+.project-shot {
+  display: block;
+  align-self: start;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--sheet);
+  box-shadow: 0 18px 40px -24px rgb(15 29 51 / 0.45);
+}
+
+.project-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top;
+}
+
+@media (min-width: 60rem) {
+  .project {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: 3.5rem;
+  }
+}
+
+/* How the demos are built, and how to get in touch. */
+
+.how {
+  padding-block: clamp(2.5rem, 6vw, 4.5rem);
+  border-top: 1px solid var(--line);
+}
+
+.how h2,
+.contact h2 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.125rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.how dl {
+  display: grid;
+  gap: 1.75rem 3rem;
+  margin-top: 1.75rem;
+}
+
+.how dt {
+  font-weight: 600;
+}
+
+.how dd {
+  margin-top: 0.25rem;
+  color: var(--soft);
+  max-width: 34rem;
+}
+
+@media (min-width: 46rem) {
+  .how dl {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+main > .contact {
+  max-width: none;
+  margin-top: 1rem;
+  padding-block: clamp(3rem, 7vw, 5rem);
+  background: var(--ink);
+  color: #fff;
+}
+
+.contact > * {
+  max-width: calc(78rem - 2 * var(--edge));
+  margin-inline: auto;
+}
+
+.contact p:not(.contact-links) {
+  margin-top: 1rem;
+  color: #c9d2e3;
+}
+
+.contact h2,
+.contact p:not(.contact-links) {
+  padding-right: max(0px, calc(100% - 44rem));
+}
+
+.contact .button {
+  background: var(--marker);
+  color: var(--ink);
+}
+
+.contact .button:hover {
+  background: #ffe47a;
+}
+
+.contact .quiet {
+  color: #fff;
+}
+
+.contact a:focus-visible {
+  outline-color: var(--marker);
+}
+
+.foot {
+  padding-block: 1.5rem;
+  font-size: 0.9375rem;
+  color: var(--soft);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .index a {
+    transition: none;
+  }
+}

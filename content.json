@@ -1,0 +1,96 @@
+{
+  "site": {
+    "title": "ChopMedia: working software demos",
+    "description": "Five working demonstration builds by ChopMedia: software for a law firm, a therapy practice, a bookkeeper, a government contractor and a service company. Demos, not client work.",
+    "email": "chopscales@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/hayden-huelskamp-547a86302/",
+    "github": "https://github.com/chopscales-gif"
+  },
+  "projects": [
+    {
+      "id": "law-firm",
+      "folder": "law-firm-front-office",
+      "shot": "client.png",
+      "for": "a law firm",
+      "name": "Law firm front office",
+      "pitch": "New inquiries answered, checked for conflicts and signed up as clients, without anyone at the firm retyping a thing.",
+      "try": [
+        "On the client side, play the scripted inquiry called A conflict of interest.",
+        "Switch to the firm side and run the conflict check. It catches a current client who was given under a different name.",
+        "Sign an engagement letter as the client, then open the outbox to read what would have been sent."
+      ],
+      "note": "The intake assistant does not give legal advice, and says so when asked.",
+      "alt": "The client side of the law firm demo: a fictional firm's home page with a chat intake assistant",
+      "demo": "https://law-firm-front-office.vercel.app",
+      "code": "https://github.com/chopscales-gif/law-firm-front-office"
+    },
+    {
+      "id": "therapy-practice",
+      "folder": "therapy-practice-scheduler",
+      "shot": "book.png",
+      "for": "a therapy practice",
+      "name": "Therapy practice scheduler",
+      "pitch": "A cancelled appointment fills itself: the time is offered to the waitlist, one person at a time, before anyone at the front desk picks up a phone.",
+      "try": [
+        "Book an appointment as a client.",
+        "On the practice side, have a client cancel and watch the time offered to the person who has waited longest.",
+        "Skip the demo clock ahead 20 minutes. The offer lapses and passes to the next person."
+      ],
+      "note": "Designed with HIPAA in mind. The demo is not HIPAA compliant or certified.",
+      "alt": "The client side of the therapy practice demo: booking an appointment with a fictional counseling practice",
+      "demo": "https://therapy-practice-scheduler.vercel.app",
+      "code": "https://github.com/chopscales-gif/therapy-practice-scheduler"
+    },
+    {
+      "id": "bookkeeping",
+      "folder": "document-ai-extractor",
+      "shot": "review.png",
+      "for": "an accounting office",
+      "name": "Document AI extractor",
+      "pitch": "Invoices, receipts and W-9s are read by AI, checked by arithmetic, and held for a person whenever something does not add up. Every value shows where on the page it came from.",
+      "try": [
+        "Open the plumber's invoice and click Subtotal. It lights up on the page, and the check shows the lines add up to $10 less.",
+        "Open the handwritten W-9, a phone photo. The tax ID is one digit short, and it was caught.",
+        "Approve the clean documents, then open the export."
+      ],
+      "note": "The AI readings were recorded ahead of time and are replayed. The arithmetic checks run live.",
+      "alt": "The document AI demo: an invoice beside the values read from it, each linked to its place on the page",
+      "demo": "https://chopmedia-document-ai.vercel.app",
+      "code": "https://github.com/chopscales-gif/document-ai-extractor"
+    },
+    {
+      "id": "government-bids",
+      "folder": "government-bid-tracker",
+      "shot": "solicitation.png",
+      "for": "a government contractor",
+      "name": "Government bid tracker",
+      "pitch": "New solicitations are read by AI, checked against what your company can take on, and turned into a checklist for the ones you bid. When an agency changes the rules midway, the change is shown before and after.",
+      "try": [
+        "Open the rooftop unit job and click a checklist item. The sentence it came from lights up in the solicitation.",
+        "Skip to the next morning. An agency has moved a deadline and added a bond on a bid in progress.",
+        "Change the company profile and see which jobs come out differently before you save."
+      ],
+      "note": "The AI readings were recorded ahead of time and are replayed. Matching is done by written rules.",
+      "alt": "The government bid tracker demo: a solicitation with its fit against the company's profile and a bid checklist",
+      "demo": "https://government-bid-tracker.vercel.app",
+      "code": "https://github.com/chopscales-gif/government-bid-tracker"
+    },
+    {
+      "id": "service-company",
+      "folder": "service-request-dispatch",
+      "shot": "customer-desktop.png",
+      "for": "a home service company",
+      "name": "Service request and dispatch",
+      "pitch": "A service company's day on one board. Customer messages are read by AI, written rules suggest who to send and say why, and when a job runs long the board shows who will be kept waiting and proposes a fix.",
+      "try": [
+        "Book a visit as a customer. Only times that can be kept are offered.",
+        "On the dispatcher's board, read a customer's message and who the rules would send, then send someone.",
+        "Skip ahead an hour. A job runs long and an emergency comes in. Accept the proposed reshuffle."
+      ],
+      "note": "The AI readings were recorded ahead of time and are replayed. No text is sent and no van is tracked.",
+      "alt": "The customer side of the service company demo: requesting a plumber from a fictional company",
+      "demo": "https://service-request-dispatch.vercel.app",
+      "code": "https://github.com/chopscales-gif/service-request-dispatch"
+    }
+  ]
+}
