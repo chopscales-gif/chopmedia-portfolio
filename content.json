@@ -36,7 +36,7 @@
       "name": "Therapy practice scheduler",
       "pitch": "A cancelled appointment fills itself: the time is offered to the waitlist, one person at a time, before anyone at the front desk picks up a phone.",
       "try": [
-        "Book an appointment as a client.",
+        "Press Play the story for a tour of about two minutes, or book an appointment as a client.",
         "On the practice side, have a client cancel and watch the time offered to the person who has waited longest.",
         "Skip the demo clock ahead 20 minutes. The offer lapses and passes to the next person."
       ],
