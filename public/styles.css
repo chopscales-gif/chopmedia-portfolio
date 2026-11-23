@@ -188,7 +188,7 @@ main > section,
 
 @media (min-width: 68rem) {
   .index {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .index a {

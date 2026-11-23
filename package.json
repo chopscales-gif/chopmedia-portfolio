@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "One page linking ChopMedia's five demonstration builds.",
+  "description": "One page linking ChopMedia's six demonstration builds.",
   "scripts": {
     "build": "node build.mjs",
     "test": "node --test",

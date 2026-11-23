@@ -1,7 +1,7 @@
 {
   "site": {
     "title": "ChopMedia: working software demos",
-    "description": "Five working demonstration builds by ChopMedia: software for a law firm, a therapy practice, a bookkeeper, a government contractor and a service company. Demos, not client work.",
+    "description": "Six demonstration builds by ChopMedia: software for a law firm, a therapy practice, a bookkeeper, a government contractor, a service company and a city transportation office. Demos, not client work.",
     "email": "chopscales@gmail.com",
     "linkedin": "https://www.linkedin.com/in/hayden-huelskamp-547a86302/",
     "github": "https://github.com/chopscales-gif"
@@ -101,6 +101,25 @@
       "alt": "The customer side of the service company demo: requesting a plumber from a fictional company",
       "demo": "https://service-request-dispatch.vercel.app",
       "code": "https://github.com/chopscales-gif/service-request-dispatch"
+    },
+    {
+      "id": "city-micromobility",
+      "folder": "micromobility-monitor",
+      "shot": "screenshots/open-data.png",
+      "color": "#c03413",
+      "on": "#ffffff",
+      "for": "a city transportation office",
+      "name": "Micromobility monitor",
+      "pitch": "For a city that permits shared scooters and bikes: check what each operator reports against its own data, judge the permit rules with the evidence kept, and bill from the trip records instead of taking the operator's word.",
+      "tryTitle": "Three things to look for in the screenshots",
+      "try": [
+        "The public page: ride counts for finished months, with any count under 10 withheld and places shown only as coarse hexagons.",
+        "An operator's own page: where it stands on each permit rule, and nothing about any other operator.",
+        "An invoice worked out from the trip records, set beside the operator's own report, with the gap between them shown."
+      ],
+      "note": "Not hosted yet, so there is no live link: this one needs a database and a background worker running. The button opens its code and screenshots. The data is simulated, the operators are fictional, and it is not used by any city.",
+      "alt": "The public page of the micromobility monitor demo: monthly ride counts for three fictional scooter and bike operators",
+      "code": "https://github.com/chopscales-gif/micromobility-monitor"
     }
   ]
 }

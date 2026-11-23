@@ -6,7 +6,7 @@ const root = fileURLToPath(new URL(".", import.meta.url));
 
 const escape = (text) => String(text).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
-// Each demo wears its own colours, taken from the demo itself, so the five are easy to tell apart.
+// Each demo wears its own colours, taken from the demo itself, so they are easy to tell apart.
 const colours = (p) => `style="--c: ${escape(p.color)}; --on: ${escape(p.on)}"`;
 
 function project(p, i, all) {
@@ -22,17 +22,19 @@ function project(p, i, all) {
         <div class="project-body">
           <div class="project-words">
             <p class="project-pitch">${escape(p.pitch)}</p>
-            <p class="project-try-title">Three things to try</p>
+            <p class="project-try-title">${escape(p.tryTitle ?? "Three things to try")}</p>
             <ol class="project-try">
               ${p.try.map((step) => `<li>${escape(step)}</li>`).join("\n              ")}
             </ol>
             <p class="project-note">${escape(p.note)}</p>
             <p class="project-links">
-              <a class="button" href="${escape(p.demo)}">Open the demo<span class="visually-hidden">: ${escape(p.name)}</span></a>
-              <a class="quiet" href="${escape(p.code)}">See the code<span class="visually-hidden">: ${escape(p.name)}</span></a>
+              ${p.demo
+                ? `<a class="button" href="${escape(p.demo)}">Open the demo<span class="visually-hidden">: ${escape(p.name)}</span></a>
+              <a class="quiet" href="${escape(p.code)}">See the code<span class="visually-hidden">: ${escape(p.name)}</span></a>`
+                : `<a class="button" href="${escape(p.code)}">See the code and screenshots<span class="visually-hidden">: ${escape(p.name)}</span></a>`}
             </p>
           </div>
-          <a class="project-shot" href="${escape(p.demo)}" tabindex="-1" aria-hidden="true">
+          <a class="project-shot" href="${escape(p.demo ?? p.code)}" tabindex="-1" aria-hidden="true">
             <img src="shots/${escape(p.id)}.jpg" alt="${escape(p.alt)}" loading="lazy">
           </a>
         </div>
@@ -66,11 +68,11 @@ export function render({ site, projects }) {
     <main>
       <section class="intro">
         <h1>Working software you can click through</h1>
-        <p class="intro-lead">Five demonstration builds, each made for one kind of office. Pick the one closest to yours.</p>
+        <p class="intro-lead">Six demonstration builds, each made for one kind of office. Pick the one closest to yours.</p>
         <ol class="index">
           ${projects.map((p, i) => `<li><a href="#${escape(p.id)}" ${colours(p)}><span class="index-num">${i + 1}</span><span class="index-for">For ${escape(p.for)}</span><span class="index-name">${escape(p.name)}</span></a></li>`).join("\n          ")}
         </ol>
-        <p class="intro-notice"><strong>These are demonstration builds, not client work.</strong> Every firm, person and record in them is invented. Each one runs in your browser with nothing to install and no account to make.</p>
+        <p class="intro-notice"><strong>These are demonstration builds, not client work.</strong> Every firm, person and record in them is invented. Five run in your browser with nothing to install and no account to make. The sixth is not hosted yet and links to its code and screenshots.</p>
       </section>
 
       <section class="demos" id="demos" aria-labelledby="demos-title">
@@ -94,7 +96,7 @@ export function render({ site, projects }) {
           </div>
           <div>
             <dt>You get your own copy</dt>
-            <dd>Each visitor works on a private copy of the sample data, so you can change anything. A reset button puts it back.</dd>
+            <dd>In the hosted demos, each visitor works on a private copy of the sample data, so you can change anything. A reset button puts it back.</dd>
           </div>
           <div>
             <dt>No numbers to quote</dt>

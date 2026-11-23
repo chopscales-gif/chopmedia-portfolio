@@ -1,6 +1,6 @@
 # ChopMedia portfolio
 
-One page that links ChopMedia's five working software demos, with who each is for and what to click first.
+One page that links ChopMedia's six working software demos, with who each is for and what to click first.
 
 > **Demo projects.** Everything linked from this page is a demonstration build by ChopMedia, not client work. Every firm, person, document and message in the demos is invented. Where a demo shows AI, the AI's answers were recorded ahead of time and are replayed. Nothing is sent to anyone.
 
@@ -15,6 +15,7 @@ One page that links ChopMedia's five working software demos, with who each is fo
 | 3 | An accounting office | Invoices, receipts and W-9s read by AI (recorded readings), checked by arithmetic, reviewed with source highlights, exported | [Live demo](https://chopmedia-document-ai.vercel.app), [code](https://github.com/chopscales-gif/document-ai-extractor) |
 | 4 | A government contractor | Solicitations read by AI (recorded readings), matched to a company profile by written rules, with sourced bid checklists and addenda shown before and after | [Live demo](https://government-bid-tracker.vercel.app), [code](https://github.com/chopscales-gif/government-bid-tracker) |
 | 5 | A home service company | Customer messages read by AI (recorded readings), written rules for who to send, a proposed reshuffle when a job runs long, and customer and technician screens | [Live demo](https://service-request-dispatch.vercel.app), [code](https://github.com/chopscales-gif/service-request-dispatch) |
+| 6 | A city transportation office | Scooter and bike operators' feeds checked, permit rules judged with the evidence kept, and invoices worked out from trip records. Simulated data, fictional operators, not used by any city | Not hosted yet, [code and screenshots](https://github.com/chopscales-gif/micromobility-monitor) |
 
 ## Rules every demo follows
 
@@ -35,7 +36,7 @@ One page that links ChopMedia's five working software demos, with who each is fo
 A static page with no dependencies. Node builds one HTML file from one content file.
 
 ```
-content.json            every word about the five demos, and their links
+content.json            every word about the six demos, and their links
 build.mjs               turns content.json into dist/index.html
 build.test.mjs          checks the content, links, notices and screenshots
 public/
@@ -62,7 +63,7 @@ npm test
 
 Open `dist/index.html` in a browser.
 
-`npm run shots` refreshes the screenshots. It expects the five demo repos to be checked out beside this folder and uses `sips`, which ships with macOS.
+`npm run shots` refreshes the screenshots. It expects the six demo repos to be checked out beside this folder and uses `sips`, which ships with macOS.
 
 ---
 
