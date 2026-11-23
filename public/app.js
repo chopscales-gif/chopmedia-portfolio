@@ -12,7 +12,7 @@
   const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
   const mod = (v, n) => ((v % n) + n) % n;
   const idx = (i) => "D" + String(i + 1).padStart(3, "0");
-  const cardHtml = (p, i) => `<span>For ${esc(p.for)}</span><i>${i + 1}</i><img src="shots/${esc(p.id)}-1.jpg" alt="${esc(p.alt)}" draggable="false">`;
+  const cardHtml = (p, i) => `<span>For ${esc(p.for)}</span><i>${i + 1}</i><img src="shots/${esc(p.id)}-thumb.jpg" alt="${esc(p.alt)}" draggable="false">`;
 
   const cards = [], lis = [], nameBtns = [];
   let hover = -1, wheeling = false;

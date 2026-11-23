@@ -43,6 +43,7 @@ public/
   styles.css
   app.js                draws the tiles, the three views and each demo's strip
   shots/                four screenshots per demo, customer-facing one first
+                        plus a close-up `<id>-thumb.jpg` for its tile
 scripts/
   sync-shots.mjs        copies those screenshots from the demo repos
 ```
@@ -66,7 +67,7 @@ npm test
 
 Open `dist/index.html` in a browser.
 
-`npm run shots` refreshes the screenshots. It expects the six demo repos to be checked out beside this folder and uses `sips`, which ships with macOS.
+`npm run shots` refreshes the screenshots. The tile close-ups (`public/shots/<id>-thumb.jpg`) are taken by hand: the demo's first screen at 1000 by 694 with its demonstration strip hidden, saved 1100 wide, so the tile shows a readable headline rather than a whole page shrunk down. It expects the six demo repos to be checked out beside this folder and uses `sips`, which ships with macOS.
 
 ---
 

@@ -30,6 +30,7 @@ test("every project has what a tile and its strip need", () => {
 
 test("every project has its screenshots", () => {
   for (const project of content.projects) {
+    assert.ok(existsSync(`${root}public/shots/${project.id}-thumb.jpg`), `public/shots/${project.id}-thumb.jpg is missing; see the README`);
     for (const n of [1, 2, 3, 4]) {
       assert.ok(existsSync(`${root}public/shots/${project.id}-${n}.jpg`), `public/shots/${project.id}-${n}.jpg is missing; run npm run shots`);
     }
