@@ -41,7 +41,8 @@ build.mjs               turns content.json into dist/index.html
 build.test.mjs          checks the content, links, notices and screenshots
 public/
   styles.css
-  shots/                one customer-facing screenshot per demo
+  app.js                draws the tiles, the three views and each demo's strip
+  shots/                four screenshots per demo, customer-facing one first
 scripts/
   sync-shots.mjs        copies those screenshots from the demo repos
 ```
@@ -50,6 +51,8 @@ Decisions worth knowing about:
 
 - **One file to edit.** A demo's pitch, steps and links live in `content.json` and nowhere else, so the page is hard to leave out of step with itself.
 - **Screenshots come from the demos' own repos.** `npm run shots` copies and resizes them, so the page shows what each README shows.
+- **Three views of the same six tiles.** A ring, a list and a slider, hand-written with no animation library. Each demo opens into a strip of its screenshots, and has its own link (for example `#law-firm`).
+- **It still works with scripts off.** The built HTML carries a plain list of every demo with its notice, limits and links.
 - **The demo notice is tested.** A test fails if the page stops saying these are demonstrations before the first demo, or drops the legal and HIPAA limits.
 
 ## Run it locally

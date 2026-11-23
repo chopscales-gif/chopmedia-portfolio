@@ -1,7 +1,7 @@
 {
   "site": {
-    "title": "ChopMedia: working software demos",
-    "description": "Six demonstration builds by ChopMedia: software for a law firm, a therapy practice, a bookkeeper, a government contractor, a service company and a city transportation office. Demos, not client work.",
+    "title": "Hayden Huelskamp: working software demos",
+    "description": "Six demonstration builds by Hayden Huelskamp: software for a law firm, a therapy practice, an accounting office, a government contractor, a home service company and a city transportation office. Demos, not client work.",
     "email": "chopscales@gmail.com",
     "linkedin": "https://www.linkedin.com/in/hayden-huelskamp-547a86302/",
     "github": "https://github.com/chopscales-gif"
@@ -10,10 +10,17 @@
     {
       "id": "law-firm",
       "folder": "law-firm-front-office",
-      "shot": "client.png",
-      "color": "#0f2e2a",
-      "on": "#ffffff",
+      "shots": [
+        "client.png",
+        "inquiries.png",
+        "conflict.png",
+        "sign-mobile.png"
+      ],
+      "color": "#cfe3d6",
+      "on": "#17171a",
       "for": "a law firm",
+      "cat": "Law firm",
+      "kind": "Intake + e-signature",
       "name": "Law firm front office",
       "pitch": "New inquiries answered, checked for conflicts and signed up as clients, without anyone at the firm retyping a thing.",
       "try": [
@@ -29,10 +36,17 @@
     {
       "id": "therapy-practice",
       "folder": "therapy-practice-scheduler",
-      "shot": "book.png",
-      "color": "#7a2e5e",
-      "on": "#ffffff",
+      "shots": [
+        "book.png",
+        "calendar.png",
+        "cancellations.png",
+        "offer-mobile.png"
+      ],
+      "color": "#e3d3ee",
+      "on": "#17171a",
       "for": "a therapy practice",
+      "cat": "Therapy practice",
+      "kind": "Scheduling + waitlist",
       "name": "Therapy practice scheduler",
       "pitch": "A cancelled appointment fills itself: the time is offered to the waitlist, one person at a time, before anyone at the front desk picks up a phone.",
       "try": [
@@ -48,10 +62,17 @@
     {
       "id": "bookkeeping",
       "folder": "document-ai-extractor",
-      "shot": "review.png",
-      "color": "#4b1a25",
-      "on": "#ffffff",
+      "shots": [
+        "review.png",
+        "inbox.png",
+        "w9.png",
+        "export.png"
+      ],
+      "color": "#efcbd1",
+      "on": "#17171a",
       "for": "an accounting office",
+      "cat": "Accounting office",
+      "kind": "Document reading + checks",
       "name": "Document AI extractor",
       "pitch": "Invoices, receipts and W-9s are read by AI, checked by arithmetic, and held for a person whenever something does not add up. Every value shows where on the page it came from.",
       "try": [
@@ -67,10 +88,17 @@
     {
       "id": "government-bids",
       "folder": "government-bid-tracker",
-      "shot": "solicitation.png",
-      "color": "#4a3fcf",
-      "on": "#ffffff",
+      "shots": [
+        "solicitation.png",
+        "addendum.png",
+        "profile.png",
+        "mobile.png"
+      ],
+      "color": "#d9d5f8",
+      "on": "#17171a",
       "for": "a government contractor",
+      "cat": "Government contractor",
+      "kind": "Bid matching + checklists",
       "name": "Government bid tracker",
       "pitch": "New solicitations are read by AI, checked against what your company can take on, and turned into a checklist for the ones you bid. When an agency changes the rules midway, the change is shown before and after.",
       "try": [
@@ -86,10 +114,17 @@
     {
       "id": "service-company",
       "folder": "service-request-dispatch",
-      "shot": "customer-desktop.png",
-      "color": "#1c2247",
-      "on": "#ffffff",
+      "shots": [
+        "customer-desktop.png",
+        "board.png",
+        "texts.png",
+        "tech.png"
+      ],
+      "color": "#fbe7a6",
+      "on": "#17171a",
       "for": "a home service company",
+      "cat": "Home service company",
+      "kind": "Booking + dispatch board",
       "name": "Service request and dispatch",
       "pitch": "A service company's day on one board. Customer messages are read by AI, written rules suggest who to send and say why, and when a job runs long the board shows who will be kept waiting and proposes a fix.",
       "try": [
@@ -105,10 +140,17 @@
     {
       "id": "city-micromobility",
       "folder": "micromobility-monitor",
-      "shot": "screenshots/open-data.png",
-      "color": "#c03413",
-      "on": "#ffffff",
+      "shots": [
+        "screenshots/open-data.png",
+        "screenshots/map.png",
+        "screenshots/operator-compliance.png",
+        "screenshots/invoice.png"
+      ],
+      "color": "#f9d3bd",
+      "on": "#17171a",
       "for": "a city transportation office",
+      "cat": "City transportation office",
+      "kind": "Data checks + billing",
       "name": "Micromobility monitor",
       "pitch": "For a city that permits shared scooters and bikes: check what each operator reports against its own data, judge the permit rules with the evidence kept, and bill from the trip records instead of taking the operator's word.",
       "tryTitle": "Three things to look for in the screenshots",

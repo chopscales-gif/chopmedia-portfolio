@@ -1,5 +1,7 @@
-// Copies each demo's customer-facing screenshot out of its own repo into
-// public/shots/, resized for the web. The page shows the top of each at 16:10. Run it after a demo's screenshot changes:
+// Copies each demo's screenshots out of its own repo into public/shots/,
+// resized for the web. Every demo shows four: the first is its tile on the
+// home stage, and all four sit on its strip. Run it after a demo's
+// screenshots change:
 //
 //   npm run shots
 //
@@ -12,16 +14,21 @@ import { fileURLToPath } from "node:url";
 
 const root = fileURLToPath(new URL("..", import.meta.url));
 const { projects } = JSON.parse(readFileSync(`${root}content.json`, "utf8"));
+const WIDEST = 1400;
 
 mkdirSync(`${root}public/shots`, { recursive: true });
 for (const project of projects) {
-  const from = `${root}../${project.folder}/docs/${project.shot}`;
-  if (!existsSync(from)) {
-    console.error(`Missing ${from}`);
-    process.exitCode = 1;
-    continue;
-  }
-  const to = `${root}public/shots/${project.id}.jpg`;
-  execFileSync("sips", ["-s", "format", "jpeg", "-s", "formatOptions", "82", "--resampleWidth", "1600", from, "--out", to], { stdio: "ignore" });
-  console.log(`${project.folder}/docs/${project.shot} -> public/shots/${project.id}.jpg`);
+  project.shots.forEach((shot, n) => {
+    const from = `${root}../${project.folder}/docs/${shot}`;
+    if (!existsSync(from)) {
+      console.error(`Missing ${from}`);
+      process.exitCode = 1;
+      return;
+    }
+    const to = `${root}public/shots/${project.id}-${n + 1}.jpg`;
+    // Phone screenshots are narrower than the limit and are left at their own size.
+    const width = Number(/pixelWidth: (\d+)/.exec(execFileSync("sips", ["-g", "pixelWidth", from], { encoding: "utf8" }))[1]);
+    execFileSync("sips", ["-s", "format", "jpeg", "-s", "formatOptions", "80", "--resampleWidth", String(Math.min(width, WIDEST)), from, "--out", to], { stdio: "ignore" });
+    console.log(`${project.folder}/docs/${shot} -> public/shots/${project.id}-${n + 1}.jpg`);
+  });
 }
