@@ -153,14 +153,14 @@
       "kind": "Data checks + billing",
       "name": "Micromobility monitor",
       "pitch": "For a city that permits shared scooters and bikes: check what each operator reports against its own data, judge the permit rules with the evidence kept, and bill from the trip records instead of taking the operator's word.",
-      "tryTitle": "Three things to look for in the screenshots",
       "try": [
-        "The public page: ride counts for finished months, with any count under 10 withheld and places shown only as coarse hexagons.",
-        "An operator's own page: where it stands on each permit rule, and nothing about any other operator.",
-        "An invoice worked out from the trip records, set beside the operator's own report, with the gap between them shown."
+        "The public page opens first: ride counts for finished months, with any count under 10 withheld and places shown only as coarse hexagons.",
+        "Open the staff console and switch seats to an operator. It sees where it stands on each permit rule, and nothing about any other operator.",
+        "Switch to the finance seat and open an invoice. It is worked out from the trip records and set beside the operator's own report, with the gap between them shown."
       ],
-      "note": "Not hosted yet, so there is no live link: this one needs a database and a background worker running. The button opens its code and screenshots. The data is simulated, the operators are fictional, and it is not used by any city.",
+      "note": "The data is simulated and stopped at one moment: this hosted copy does not run the background worker that would keep it arriving. The operators are fictional, and it is not used by any city.",
       "alt": "The public page of the micromobility monitor demo: monthly ride counts for three fictional scooter and bike operators",
+      "demo": "https://micromobility-monitor.vercel.app/open-data",
       "code": "https://github.com/chopscales-gif/micromobility-monitor"
     }
   ]

@@ -15,7 +15,7 @@ One page that links ChopMedia's six working software demos, with who each is for
 | 3 | An accounting office | Invoices, receipts and W-9s read by AI (recorded readings), checked by arithmetic, reviewed with source highlights, exported | [Live demo](https://chopmedia-document-ai.vercel.app), [code](https://github.com/chopscales-gif/document-ai-extractor) |
 | 4 | A government contractor | Solicitations read by AI (recorded readings), matched to a company profile by written rules, with sourced bid checklists and addenda shown before and after | [Live demo](https://government-bid-tracker.vercel.app), [code](https://github.com/chopscales-gif/government-bid-tracker) |
 | 5 | A home service company | Customer messages read by AI (recorded readings), written rules for who to send, a proposed reshuffle when a job runs long, and customer and technician screens | [Live demo](https://service-request-dispatch.vercel.app), [code](https://github.com/chopscales-gif/service-request-dispatch) |
-| 6 | A city transportation office | Scooter and bike operators' feeds checked, permit rules judged with the evidence kept, and invoices worked out from trip records. Simulated data, fictional operators, not used by any city | Not hosted yet, [code and screenshots](https://github.com/chopscales-gif/micromobility-monitor) |
+| 6 | A city transportation office | Scooter and bike operators' feeds checked, permit rules judged with the evidence kept, and invoices worked out from trip records. Simulated data, fictional operators, not used by any city | [Live demo](https://micromobility-monitor.vercel.app/open-data) (data stopped at one moment, no background worker), [code](https://github.com/chopscales-gif/micromobility-monitor) |
 
 ## Rules every demo follows
 

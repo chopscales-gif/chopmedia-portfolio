@@ -21,7 +21,7 @@ test("every project has what a tile and its strip need", () => {
     assert.equal(project.try.length, 3, `${project.id} should have three things to try`);
     assert.equal(project.shots.length, 4, `${project.id} should have four screenshots`);
     // A demo with no hosted copy has to say so.
-    if (project.demo) assert.match(project.demo, /^https:\/\/[a-z0-9-]+\.vercel\.app$/);
+    if (project.demo) assert.match(project.demo, /^https:\/\/[a-z0-9-]+\.vercel\.app(\/[a-z0-9-]+)?$/);
     else assert.match(project.note, /^Not hosted yet/);
     assert.equal(project.code, `https://github.com/chopscales-gif/${project.folder}`);
   }
