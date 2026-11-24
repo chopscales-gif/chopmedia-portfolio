@@ -36,7 +36,7 @@ export function render({ site, projects }) {
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;800&display=swap">
     <link rel="stylesheet" href="styles.css">
     <noscript><style>html, body { height: auto; overflow: auto; } #app { display: none; }</style></noscript>
   </head>
@@ -82,21 +82,27 @@ export function render({ site, projects }) {
       <section class="sheet case" id="case" aria-label="Demo details"><div class="track" id="track"></div><p class="pct" id="pct">0%</p><div class="pull" id="pull"></div></section>
     
       <section class="sheet page" id="about" aria-label="What I do">
-        <h2 class="lead">Every office has a way of working that is entirely its own. Inimitable, even. Most software asks you to give it up. I build the kind that fits it.</h2>
+        <p class="kick">What I do</p>
+        <h2 class="lead xl">Every office has a way of working that is entirely its own. <em>Inimitable, even.</em> Most software asks you to give it up. I build the kind that fits it.</h2>
         <p class="prose in">I'm Hayden Huelskamp, a software engineer in Utah. I sit with the people who do the work and find the hours that disappear into retyping, chasing and double-checking. Then I build the software that gives those hours back. Sometimes that is a full application. Sometimes it is a quiet connection between two tools you already pay for. Often it is both.</p>
-        <div class="cols in">
-          <div><h3>Software made for you</h3><p>Client portals, booking, intake, staff screens, dispatch boards. Shaped around how your people actually work, not how a product team somewhere imagined they might.</p></div>
-          <div><h3>Connections between what you already use</h3><p>Your practice software, your accounting, your inbox, your forms. Linked so a detail entered once arrives everywhere it is needed, and nobody types it twice.</p></div>
-          <div><h3>AI that reads, with a person in charge</h3><p>Invoices, messages, applications and contracts read in seconds, every figure checked by arithmetic and rules, and anything uncertain held for a person. The AI does the reading. Your people make the calls.</p></div>
-        </div>
-        <div class="row rule"><h3>Who it's for</h3><p class="say-big">Law firms and therapy practices. Accounting offices and contractors. Service companies, city departments, and the offices in between. The trade changes; the problem rarely does: skilled people spending their days on work beneath their skill. You are the maven of your field. My work is to clear away everything that keeps you from it.</p></div>
-        <div class="row"><h3>How I work</h3><ul class="ways">
-          <li><b>I start from the seat.</b> Before I design a screen, I ask who sits in front of it, what they need to know, and when.</li>
-          <li><b>I show the working.</b> Every number can be traced back to where it came from. Software that cannot explain itself does not deserve your trust.</li>
-          <li><b>Small and finished beats large and almost.</b> You see working software early and often, not a slide deck.</li>
-          <li><b>I'm honest about the edges.</b> What a tool does not do is said as plainly as what it does. Every demo on this site is built the same way.</li>
-        </ul></div>
-        <div class="row rule"><h3>Start here</h3><div><p class="say-big">If something in your office is still done by hand, write and tell me about it. The best projects tend to begin with "we've always done it this way."</p>
+        <div class="sec"><p class="idx">01</p><h3 class="sec-h">What I build</h3>
+          <div class="trio">
+            <div><h4>Software made for you</h4><p>Client portals, booking, intake, staff screens, dispatch boards. Shaped around how your people actually work, not how a product team somewhere imagined they might.</p></div>
+            <div><h4>Connections between what you already use</h4><p>Your practice software, your accounting, your inbox, your forms. Linked so a detail entered once arrives everywhere it is needed, and nobody types it twice.</p></div>
+            <div><h4>AI that reads, with a person in charge</h4><p>Invoices, messages, applications and contracts read in seconds, every figure checked by arithmetic and rules, and anything uncertain held for a person. The AI does the reading. Your people make the calls.</p></div>
+          </div></div>
+        <div class="sec"><p class="idx">02</p><h3 class="sec-h">Who it's for</h3>
+          <p class="trades">Law firms. Therapy practices. Accounting offices. Contractors. Service companies. City departments. <span>And the offices in between.</span></p>
+          <p class="say-big in">The trade changes; the problem rarely does: skilled people spending their days on work beneath their skill. You are the maven of your field. My work is to clear away everything that keeps you from it.</p></div>
+        <div class="sec"><p class="idx">03</p><h3 class="sec-h">How I work</h3>
+          <ol class="ways4">
+            <li><h4>I start from the seat.</h4><p>Before I design a screen, I ask who sits in front of it, what they need to know, and when.</p></li>
+            <li><h4>I show the working.</h4><p>Every number can be traced back to where it came from. Software that cannot explain itself does not deserve your trust.</p></li>
+            <li><h4>Small and finished beats large and almost.</h4><p>You see working software early and often, not a slide deck.</p></li>
+            <li><h4>I'm honest about the edges.</h4><p>What a tool does not do is said as plainly as what it does. Every demo on this site is built the same way.</p></li>
+          </ol></div>
+        <div class="sec"><p class="idx">04</p><h3 class="sec-h">Start here</h3>
+          <div class="close in"><p class="say-big">If something in your office is still done by hand, write and tell me about it. The best projects tend to begin with "we've always done it this way."</p>
           <div class="btns-row"><a class="btn solid" href="mailto:${escape(site.email)}">Write to me</a><button class="btn" data-go="home">See the demos</button></div></div></div>
         <div class="work"><h3>Explore the demos</h3><div class="grid" data-grid></div></div>
         <div data-foot="about"></div>

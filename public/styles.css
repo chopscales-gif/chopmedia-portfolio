@@ -184,10 +184,25 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .btn { display: inline-flex; align-items: flex-end; justify-content: space-between; gap: 30px; min-width: 172px; height: 44px; margin-top: 30px; padding: 0 12px 8px; border: 1px solid var(--ink); text-decoration: none; }
 .btn.solid { background: var(--button); color: var(--button-on); border-color: var(--button); }
 .work { margin-top: 124px; }
-.prose.in { margin: 64px 0 0 var(--col) !important; max-width: 40em; font-size: 18px; line-height: 1.6; color: var(--ink-soft); }
-.say-big { font-size: 20px; line-height: 1.5; max-width: 38em; }
-.ways { display: grid; gap: 22px; } .ways li { font-size: 17px; line-height: 1.55; } .ways li b { display: block; font-size: 18px; margin-bottom: 4px; }
-.btns-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; } .btns-row .btn { font: inherit; background: none; color: var(--ink); cursor: pointer; } .btns-row .btn.solid { background: var(--button); color: var(--button-on); }
+.kick { margin: 170px 0 0 var(--col) !important; font-size: 14px; text-transform: uppercase; color: var(--ink-soft); }
+.lead.xl { margin-top: 22px !important; max-width: 1100px; font-size: clamp(30px, 3.3vw, 50px); line-height: 1.12; font-weight: 600; letter-spacing: -.025em; }
+.lead.xl em { font-style: normal; color: var(--ink-soft); }
+.prose.in { margin: 56px 0 0 var(--col) !important; max-width: 38em; font-size: 19px; line-height: 1.6; color: var(--ink-soft); }
+.sec { margin-top: 150px; border-top: 1px solid var(--line); padding-top: 26px; }
+.idx { font-size: 14px; color: var(--ink-soft); }
+.sec-h { margin: 10px 0 0 -.04em !important; font-size: clamp(44px, 7vw, 118px); line-height: .9; font-weight: 800; letter-spacing: -.035em; text-transform: uppercase; }
+.trio { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 28px; margin: 70px 0 0 var(--col); }
+.trio h4, .ways4 h4 { margin: 0; font-size: 22px; line-height: 1.2; font-weight: 700; letter-spacing: -.015em; }
+.trio p, .ways4 p { margin: 14px 0 0 !important; font-size: 16px; line-height: 1.6; color: var(--ink-soft); }
+.trades { margin: 70px 0 0 var(--col) !important; max-width: 20em; font-size: clamp(26px, 2.8vw, 42px); line-height: 1.18; font-weight: 600; letter-spacing: -.02em; }
+.trades span { color: var(--ink-soft); }
+.say-big { font-size: 21px; line-height: 1.5; max-width: 34em; }
+.say-big.in { margin: 40px 0 0 var(--col) !important; }
+.ways4 { list-style: none; padding: 0; margin: 70px 0 0 var(--col); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 56px 48px; counter-reset: w; }
+.ways4 li { counter-increment: w; border-top: 2px solid var(--ink); padding-top: 18px; }
+.ways4 li::before { content: "0" counter(w); display: block; font-size: 14px; color: var(--ink-soft); margin-bottom: 12px; }
+.close.in { margin: 70px 0 0 var(--col); } .close .say-big { font-size: clamp(22px, 2.2vw, 30px); font-weight: 500; letter-spacing: -.01em; }
+.btns-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; } .btns-row .btn { font: inherit; background: none; color: var(--ink); cursor: pointer; } .btns-row .btn.solid { background: var(--button); color: var(--button-on); }
 .grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 34px 20px; margin-top: 16px; }
 .grid a { text-decoration: none; text-transform: uppercase; font-size: 14px; }
 .grid .card { position: relative; left: auto; top: auto; display: block; width: 100%; height: auto; aspect-ratio: 1; cursor: pointer; margin-bottom: 10px; }
@@ -227,7 +242,8 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   .tile { height: auto; padding: 16px; }
   .tile img { width: 100%; height: auto; max-height: 70vh; object-fit: contain; object-position: left; }
   .next { width: auto; min-width: 0; padding: 30px 0 0; }
-  .lead { margin: 110px 0 0 !important; } .prose.in { margin: 34px 0 0 !important; font-size: 16px; } .say-big { font-size: 17px; } .ways li { font-size: 16px; } .title { margin-top: 120px !important; }
+  .lead { margin: 110px 0 0 !important; } .kick { margin: 100px 0 0 !important; } .prose.in { margin: 30px 0 0 !important; font-size: 16px; } .say-big { font-size: 18px; } .say-big.in, .trio, .trades, .ways4, .close.in { margin-left: 0 !important; }
+  .sec { margin-top: 90px; } .sec-h { font-size: 12.5vw; } .trio, .ways4 { grid-template-columns: 1fr; gap: 34px; margin-top: 40px; } .trades { margin-top: 40px !important; font-size: 26px; } .trio h4, .ways4 h4 { font-size: 20px; } .title { margin-top: 120px !important; }
   .cols, .cols.in { grid-template-columns: 1fr; margin: 64px 0 0; gap: 34px; }
   .cols p { margin-top: 10px; }
   .row, .more, .touch { grid-template-columns: 1fr; gap: 16px; margin-top: 64px; } .row.rule { padding-top: 56px; }
