@@ -50,7 +50,8 @@ export function render({ site, projects }) {
           <button id="modeSlider" class="mode only-home">Slider</button>
           <button id="back" class="only-case strong">← All demos</button>
           <button id="contactBtn" class="strong only-phone">Contact</button>
-          <button id="menuBtn" class="strong gap" aria-expanded="false" aria-controls="menu">Menu</button>
+          <button id="whatBtn" class="strong gap" data-go="about">What I do</button>
+          <button id="menuBtn" class="strong" aria-expanded="false" aria-controls="menu">Menu</button>
         </nav>
       </header>
       <p class="case-hint" id="caseHint">Scroll up for the previous demo</p>
@@ -58,7 +59,7 @@ export function render({ site, projects }) {
       <div class="menu" id="menu" aria-hidden="true">
         <button class="x" id="menuX" aria-label="Close menu"></button>
         <button class="lk" data-go="home">Demos</button>
-        <button class="lk" data-go="about">About</button>
+        <button class="lk" data-go="about">What I do</button>
         <button class="lk" data-go="built">How they are built</button>
         <button class="lk" data-go="contact">Contact</button>
         <a href="${escape(site.linkedin)}" target="_blank" rel="noopener">LinkedIn</a>
@@ -80,14 +81,23 @@ export function render({ site, projects }) {
     
       <section class="sheet case" id="case" aria-label="Demo details"><div class="track" id="track"></div><p class="pct" id="pct">0%</p><div class="pull" id="pull"></div></section>
     
-      <section class="sheet page" id="about" aria-label="About Hayden Huelskamp">
-        <h2 class="lead">I am Hayden Huelskamp, an engineer based in Utah. I build custom software and automations for small businesses and public agencies: intake, scheduling and reminders, documents and e-signature, and connections to the systems an office already uses.</h2>
-        <div class="cols">
-          <div><h3>Intake and sign-up</h3><p>New inquiries answered, checked and signed up as clients without anyone retyping them. Shown in the law firm front office.</p></div>
-          <div><h3>Scheduling and reminders</h3><p>Appointments, waitlists and the day's jobs kept in order. Shown in the therapy practice scheduler and the dispatch board.</p></div>
-          <div><h3>Documents and e-signature</h3><p>Paperwork read by AI, checked by arithmetic and held for a person when something does not add up. Shown in the document extractor and the bid tracker.</p></div>
-          <div><h3>Checks and billing</h3><p>Reports checked against the records underneath them, and invoices worked out from those records. Shown in the micromobility monitor.</p></div>
+      <section class="sheet page" id="about" aria-label="What I do">
+        <h2 class="lead">Every office has a way of working that is entirely its own. Inimitable, even. Most software asks you to give it up. I build the kind that fits it.</h2>
+        <p class="prose in">I'm Hayden Huelskamp, a software engineer in Utah. I sit with the people who do the work and find the hours that disappear into retyping, chasing and double-checking. Then I build the software that gives those hours back. Sometimes that is a full application. Sometimes it is a quiet connection between two tools you already pay for. Often it is both.</p>
+        <div class="cols in">
+          <div><h3>Software made for you</h3><p>Client portals, booking, intake, staff screens, dispatch boards. Shaped around how your people actually work, not how a product team somewhere imagined they might.</p></div>
+          <div><h3>Connections between what you already use</h3><p>Your practice software, your accounting, your inbox, your forms. Linked so a detail entered once arrives everywhere it is needed, and nobody types it twice.</p></div>
+          <div><h3>AI that reads, with a person in charge</h3><p>Invoices, messages, applications and contracts read in seconds, every figure checked by arithmetic and rules, and anything uncertain held for a person. The AI does the reading. Your people make the calls.</p></div>
         </div>
+        <div class="row rule"><h3>Who it's for</h3><p class="say-big">Law firms and therapy practices. Accounting offices and contractors. Service companies, city departments, and the offices in between. The trade changes; the problem rarely does: skilled people spending their days on work beneath their skill. You are the maven of your field. My work is to clear away everything that keeps you from it.</p></div>
+        <div class="row"><h3>How I work</h3><ul class="ways">
+          <li><b>I start from the seat.</b> Before I design a screen, I ask who sits in front of it, what they need to know, and when.</li>
+          <li><b>I show the working.</b> Every number can be traced back to where it came from. Software that cannot explain itself does not deserve your trust.</li>
+          <li><b>Small and finished beats large and almost.</b> You see working software early and often, not a slide deck.</li>
+          <li><b>I'm honest about the edges.</b> What a tool does not do is said as plainly as what it does. Every demo on this site is built the same way.</li>
+        </ul></div>
+        <div class="row rule"><h3>Start here</h3><div><p class="say-big">If something in your office is still done by hand, write and tell me about it. The best projects tend to begin with "we've always done it this way."</p>
+          <div class="btns-row"><a class="btn solid" href="mailto:${escape(site.email)}">Write to me</a><button class="btn" data-go="home">See the demos</button></div></div></div>
         <div class="work"><h3>Explore the demos</h3><div class="grid" data-grid></div></div>
         <div data-foot="about"></div>
       </section>

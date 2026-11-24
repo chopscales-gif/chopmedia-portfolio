@@ -34,7 +34,7 @@
   document.querySelector("[data-mosaic]").innerHTML = P.map((p, i) => `<a class="card" href="#${esc(p.id)}" data-open="${i}" style="--c:${esc(p.color)};--on:${esc(p.on)}">${cardHtml(p, i)}</a>`).join("");
   $("limits").innerHTML = P.map((p) => `<li><b>${esc(p.name)}.</b> ${esc(p.note)}</li>`).join("");
   document.querySelectorAll("[data-foot]").forEach((el) => {
-    const here = el.dataset.foot, links = [["about", "About"], ["built", "How they are built"], ["contact", "Contact"]].filter((l) => l[0] !== here);
+    const here = el.dataset.foot, links = [["about", "What I do"], ["built", "How they are built"], ["contact", "Contact"]].filter((l) => l[0] !== here);
     el.innerHTML = `
       <div class="more"><h3 class="up" style="font-size:12px;font-weight:400">Find out more</h3>
         <ul><li><button data-go="home">All the work</button></li>${links.map((l) => `<li><button data-go="${l[0]}">${l[1]}</button></li>`).join("")}</ul>
