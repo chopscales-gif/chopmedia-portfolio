@@ -4,7 +4,7 @@ One page that links ChopMedia's six working software demos, plus KyraSonara, a l
 
 > **Demo projects.** Everything linked from this page is a demonstration build by ChopMedia, not client work. Every firm, person, document and message in the demos is invented. Where a demo shows AI, the AI's answers were recorded ahead of time and are replayed. Nothing is sent to anyone.
 
-**Live page:** https://chopmedia.vercel.app
+**Live page:** https://haydenhuelskamp.vercel.app
 
 ## The demos
 
