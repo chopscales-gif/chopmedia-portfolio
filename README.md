@@ -1,6 +1,6 @@
 # ChopMedia portfolio
 
-One page that links ChopMedia's six working software demos, with who each is for and what to click first.
+One page that links ChopMedia's six working software demos, plus KyraSonara, a live site of Hayden's own audio plugin company, with who each is for and what to click first.
 
 > **Demo projects.** Everything linked from this page is a demonstration build by ChopMedia, not client work. Every firm, person, document and message in the demos is invented. Where a demo shows AI, the AI's answers were recorded ahead of time and are replayed. Nothing is sent to anyone.
 
@@ -16,6 +16,7 @@ One page that links ChopMedia's six working software demos, with who each is for
 | 4 | A government contractor | Solicitations read by AI (recorded readings), matched to a company profile by written rules, with sourced bid checklists and addenda shown before and after | [Live demo](https://government-bid-tracker.vercel.app), [code](https://github.com/chopscales-gif/government-bid-tracker) |
 | 5 | A home service company | Customer messages read by AI (recorded readings), written rules for who to send, a proposed reshuffle when a job runs long, and customer and technician screens | [Live demo](https://service-request-dispatch.vercel.app), [code](https://github.com/chopscales-gif/service-request-dispatch) |
 | 6 | A city transportation office | Scooter and bike operators' feeds checked, permit rules judged with the evidence kept, and invoices worked out from trip records. Simulated data, fictional operators, not used by any city | [Live demo](https://micromobility-monitor.vercel.app/open-data) (data stopped at one moment, no background worker), [code](https://github.com/chopscales-gif/micromobility-monitor) |
+| 7 | My own audio plugin company (live site, not a demo) | KyraSonara: home page, the Velyra equalizer's product page, cart, trial requests, support and legal pages. Its code is private | [Live site](https://kyrasonara.com) |
 
 ## Rules every demo follows
 
@@ -36,7 +37,7 @@ One page that links ChopMedia's six working software demos, with who each is for
 A static page with no dependencies. Node builds one HTML file from one content file.
 
 ```
-content.json            every word about the six demos, and their links
+content.json            every word about the demos and the live site, and their links
 build.mjs               turns content.json into dist/index.html
 build.test.mjs          checks the content, links, notices and screenshots
 public/
@@ -52,7 +53,7 @@ Decisions worth knowing about:
 
 - **One file to edit.** A demo's pitch, steps and links live in `content.json` and nowhere else, so the page is hard to leave out of step with itself.
 - **Screenshots come from the demos' own repos.** `npm run shots` copies and resizes them, so the page shows what each README shows.
-- **Three views of the same six tiles.** A ring, a list and a slider, hand-written with no animation library. Each demo opens into a strip of its screenshots, and has its own link (for example `#law-firm`).
+- **Three views of the same seven tiles.** A ring, a list and a slider, hand-written with no animation library. Each demo opens into a strip of its screenshots, and has its own link (for example `#law-firm`).
 - **It still works with scripts off.** The built HTML carries a plain list of every demo with its notice, limits and links.
 - **The demo notice is tested.** A test fails if the page stops saying these are demonstrations before the first demo, or drops the legal and HIPAA limits.
 

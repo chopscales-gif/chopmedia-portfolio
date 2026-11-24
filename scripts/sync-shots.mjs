@@ -18,6 +18,8 @@ const WIDEST = 1400;
 
 mkdirSync(`${root}public/shots`, { recursive: true });
 for (const project of projects) {
+  // A live site has no repo beside this folder; its screenshots are taken by hand.
+  if (!project.folder) continue;
   project.shots.forEach((shot, n) => {
     const from = `${root}../${project.folder}/docs/${shot}`;
     if (!existsSync(from)) {

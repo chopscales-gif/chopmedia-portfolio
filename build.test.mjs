@@ -13,19 +13,26 @@ const plain = html.slice(html.indexOf('<div class="plain">'), html.indexOf("</no
 const data = JSON.parse(/<script type="application\/json" id="data">(.*)<\/script>/.exec(html)[1]);
 
 test("every project has what a tile and its strip need", () => {
-  assert.equal(content.projects.length, 6);
+  assert.equal(content.projects.length, 7);
   for (const project of content.projects) {
-    for (const field of ["id", "folder", "color", "on", "for", "cat", "kind", "name", "pitch", "note", "alt", "code"]) {
+    for (const field of ["id", "color", "on", "for", "cat", "kind", "name", "pitch", "note", "alt"]) {
       assert.ok(project[field], `${project.id} is missing ${field}`);
     }
     assert.equal(project.try.length, 3, `${project.id} should have three things to try`);
+    // A live site is not a demo: it has no public code and its screenshots are taken by hand, and it has to say so.
+    if (project.live) {
+      assert.match(project.demo, /^https:\/\//);
+      assert.match(project.note, /^This one is not a demo/);
+      continue;
+    }
+    assert.ok(project.folder && project.code, `${project.id} is missing its folder or code`);
     assert.equal(project.shots.length, 4, `${project.id} should have four screenshots`);
     // A demo with no hosted copy has to say so.
     if (project.demo) assert.match(project.demo, /^https:\/\/[a-z0-9-]+\.vercel\.app(\/[a-z0-9-]+)?$/);
     else assert.match(project.note, /^Not hosted yet/);
     assert.equal(project.code, `https://github.com/chopscales-gif/${project.folder}`);
   }
-  assert.equal(new Set(content.projects.map((project) => project.id)).size, 6);
+  assert.equal(new Set(content.projects.map((project) => project.id)).size, 7);
 });
 
 test("every project has its screenshots", () => {
@@ -44,7 +51,7 @@ test("the script is handed every word and link in content.json", () => {
 test("with scripts off, the page still links every demo and its code, and every jump link lands", () => {
   for (const project of content.projects) {
     if (project.demo) assert.ok(plain.includes(`href="${project.demo}"`));
-    assert.ok(plain.includes(`href="${project.code}"`));
+    if (project.code) assert.ok(plain.includes(`href="${project.code}"`));
     assert.ok(plain.includes(`href="#${project.id}"`));
     assert.ok(plain.includes(`id="${project.id}"`));
   }

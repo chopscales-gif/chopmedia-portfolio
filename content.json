@@ -1,7 +1,7 @@
 {
   "site": {
     "title": "Hayden Huelskamp: working software demos",
-    "description": "Six demonstration builds by Hayden Huelskamp: software for a law firm, a therapy practice, an accounting office, a government contractor, a home service company and a city transportation office. Demos, not client work.",
+    "description": "Six demonstration builds by Hayden Huelskamp: software for a law firm, a therapy practice, an accounting office, a government contractor, a home service company and a city transportation office. Plus one live site of his own. The demos are not client work.",
     "email": "chopscales@gmail.com",
     "linkedin": "https://www.linkedin.com/in/hayden-huelskamp-547a86302/",
     "github": "https://github.com/chopscales-gif"
@@ -162,6 +162,26 @@
       "alt": "The public page of the micromobility monitor demo: monthly ride counts for three fictional scooter and bike operators",
       "demo": "https://micromobility-monitor.vercel.app/open-data",
       "code": "https://github.com/chopscales-gif/micromobility-monitor"
+    },
+    {
+      "id": "kyrasonara",
+      "live": true,
+      "color": "#e6dccd",
+      "on": "#17171a",
+      "for": "my own audio plugin company",
+      "cat": "Audio plugin company",
+      "kind": "Live product site",
+      "name": "KyraSonara",
+      "pitch": "The live site of my own audio plugin company: a home page, a product page for the Velyra equalizer, a cart, trial requests, support and the legal pages, built to feel as considered as the plugin.",
+      "tryTitle": "Three things to look at",
+      "try": [
+        "Scroll the home page. It glides, and each section comes in as you reach it.",
+        "Open the Velyra page for the product itself: what it does, its price, its specifications and the common questions.",
+        "Look at the cookie notice when you arrive. Google tags stay off until you allow at least one option."
+      ],
+      "note": "This one is not a demo. It is a real, live site for my own company, so nothing on it is invented, and its code is private.",
+      "alt": "The KyraSonara home page: a dark page with the words For those who hear it",
+      "demo": "https://kyrasonara.com"
     }
   ]
 }

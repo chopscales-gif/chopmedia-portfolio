@@ -28,7 +28,7 @@
     b.textContent = p.name; b.addEventListener("click", () => (i === active ? openCase(i) : goTo(i)));
     li.appendChild(b); names.appendChild(li); lis.push(li); nameBtns.push(b);
   });
-  // the same six tiles again, as a plain grid on the pages
+  // the same tiles again, as a plain grid on the pages
   const gridHtml = (label) => P.map((p, i) => `<a href="#${esc(p.id)}" data-open="${i}"><span class="card" style="--c:${esc(p.color)};--on:${esc(p.on)}">${cardHtml(p, i)}</span>${label ? `${idx(i)}<span>${esc(p.name)}</span>` : ""}</a>`).join("");
   document.querySelector("[data-grid]").innerHTML = gridHtml(true);
   document.querySelector("[data-mosaic]").innerHTML = P.map((p, i) => `<a class="card" href="#${esc(p.id)}" data-open="${i}" style="--c:${esc(p.color)};--on:${esc(p.on)}">${cardHtml(p, i)}</a>`).join("");
@@ -37,7 +37,7 @@
     const here = el.dataset.foot, links = [["about", "About"], ["built", "How they are built"], ["contact", "Contact"]].filter((l) => l[0] !== here);
     el.innerHTML = `
       <div class="more"><h3 class="up" style="font-size:12px;font-weight:400">Find out more</h3>
-        <ul><li><button data-go="home">The six demos</button></li>${links.map((l) => `<li><button data-go="${l[0]}">${l[1]}</button></li>`).join("")}</ul>
+        <ul><li><button data-go="home">All the work</button></li>${links.map((l) => `<li><button data-go="${l[0]}">${l[1]}</button></li>`).join("")}</ul>
         <div class="say"><h3 class="up" style="font-size:12px;font-weight:400">Want something like this for your office?</h3><a class="btn solid" href="mailto:${esc(site.email)}">Write to me</a></div></div>
       <p class="big" aria-hidden="true">Hayden Huelskamp</p>
       <div class="pfoot"><p>© 2026 Hayden Huelskamp<br>Demonstration builds, not client work</p><p>Interested in working together?<br><a href="mailto:${esc(site.email)}">${esc(site.email)}</a></p>
@@ -158,15 +158,15 @@
   function openCase(i) {
     const p = P[i], next = P[(i + 1) % N]; current = i; over = 0;
     track.innerHTML = `
-      <div class="words"><p class="for">For ${esc(p.for)}</p><h2>${esc(p.name)}</h2><p class="pitch">${esc(p.pitch)}</p>${p.demo ? `<p class="code-phone"><a href="${esc(p.code)}" target="_blank" rel="noopener">See the code</a></p>` : ""}</div>
+      <div class="words"><p class="for">For ${esc(p.for)}</p><h2>${esc(p.name)}</h2><p class="pitch">${esc(p.pitch)}</p>${p.demo && p.code ? `<p class="code-phone"><a href="${esc(p.code)}" target="_blank" rel="noopener">See the code</a></p>` : ""}</div>
       <div class="try"><h3>${esc(p.tryTitle || "Three things to try")}</h3><ol>${p.try.map((t) => `<li>${esc(t)}</li>`).join("")}</ol><p class="note">${esc(p.note)}</p></div>
       ${[1, 2, 3, 4].map((n) => `<figure class="tile" style="--c:${esc(p.color)}"><img src="shots/${esc(p.id)}-${n}.jpg" alt="${esc(n === 1 ? p.alt : `${p.name}, screen ${n}`)}" draggable="false"></figure>`).join("")}
       <a class="next" href="#${esc(next.id)}" id="nextLink"><span>${coarse ? "Next demo" : "Scroll down for the next demo"}</span>${esc(next.name)}</a>`;
     $("nextLink").addEventListener("click", (e) => { e.preventDefault(); if (moved <= 6) hop(1); });
     track.querySelectorAll("img").forEach((img) => img.addEventListener("load", sizeCase));
     cx = cAim = 0; $("case").scrollTop = 0;
-    cta.textContent = p.demo ? "Open the demo" : "See the code and screenshots"; cta.href = p.demo || p.code;
-    ctaAlt.href = p.code; ctaAlt.style.display = p.demo ? "" : "none";
+    cta.textContent = p.live ? "Open the site" : p.demo ? "Open the demo" : "See the code and screenshots"; cta.href = p.demo || p.code;
+    ctaAlt.href = p.code || "#"; ctaAlt.style.display = p.demo && p.code ? "" : "none";
     pos = aim = i; vel = 0;
     show("case"); mark(p.id); sizeCase();
   }

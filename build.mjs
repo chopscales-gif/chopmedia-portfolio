@@ -9,7 +9,7 @@ const escape = (text) => String(text).replace(/&/g, "&amp;").replace(/</g, "&lt;
 // The page is drawn by public/app.js from this data. "<" is written as an escape so no text can close the tag.
 const data = (content) => JSON.stringify(content).replace(/</g, "\\u003c");
 
-// The same six demos as plain text and links, for a browser with scripts turned off.
+// The same projects as plain text and links, for a browser with scripts turned off.
 function plain(p, i) {
   return `
         <article id="${escape(p.id)}">
@@ -17,7 +17,7 @@ function plain(p, i) {
           <h2>${escape(p.name)}</h2>
           <p>${escape(p.pitch)}</p>
           <p>${escape(p.note)}</p>
-          <p>${p.demo ? `<a href="${escape(p.demo)}">Open the demo</a> ` : ""}<a href="${escape(p.code)}">${p.demo ? "See the code" : "See the code and screenshots"}</a></p>
+          <p>${p.demo ? `<a href="${escape(p.demo)}">${p.live ? "Open the site" : "Open the demo"}</a> ` : ""}${p.code ? `<a href="${escape(p.code)}">${p.demo ? "See the code" : "See the code and screenshots"}</a>` : ""}</p>
           <img src="shots/${escape(p.id)}-1.jpg" alt="${escape(p.alt)}" loading="lazy">
         </article>`;
 }
@@ -68,7 +68,7 @@ export function render({ site, projects }) {
     
       <main class="stage" id="stage">
         <h1 class="vh">${escape(site.title)}</h1>
-        <p class="intro" id="intro"><strong>Working software you can click through.</strong> Six demonstration builds, not client work, each made for one kind of office. Every firm, person and record in them is invented.</p>
+        <p class="intro" id="intro"><strong>Working software you can click through.</strong> Six demonstration builds, not client work, each made for one kind of office, and one live site of my own. Every firm, person and record in the demos is invented.</p>
         <ol class="names" id="names"></ol>
         <p class="meta m1" id="m1"><span></span></p><p class="meta m2" id="m2"><span></span></p><p class="meta m3" id="m3"><span></span></p>
         <p class="slabel" aria-hidden="true"><span id="sIdx"></span><span id="sName"></span></p>
@@ -132,7 +132,7 @@ export function render({ site, projects }) {
 
     <noscript>
       <div class="plain">
-        <p><strong>Hayden Huelskamp.</strong> Working software you can click through. Six demonstration builds, not client work, each made for one kind of office. Every firm, person and record in them is invented.</p>
+        <p><strong>Hayden Huelskamp.</strong> Working software you can click through. Six demonstration builds, not client work, each made for one kind of office, and one live site of my own. Every firm, person and record in the demos is invented.</p>
         <p>${projects.map((p) => `<a href="#${escape(p.id)}">${escape(p.name)}</a>`).join(" · ")}</p>${projects.map(plain).join("")}
         <p>Write to <a href="mailto:${escape(site.email)}">${escape(site.email)}</a>. <a href="${escape(site.linkedin)}">LinkedIn</a> · <a href="${escape(site.github)}">GitHub</a></p>
       </div>
