@@ -191,7 +191,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .sec { margin-top: 150px; border-top: 1px solid var(--line); padding-top: 26px; }
 .idx { font-size: 14px; color: var(--ink-soft); }
 .sec-h { margin: 10px 0 0 -.04em !important; font-size: clamp(44px, 7vw, 118px); line-height: .9; font-weight: 800; letter-spacing: -.035em; text-transform: uppercase; }
-.trio { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 28px; margin: 70px 0 0 var(--col); }
+.trio { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 56px 48px; max-width: 980px; margin: 70px 0 0 var(--col); }
 .trio h4, .ways4 h4 { margin: 0; font-size: 22px; line-height: 1.2; font-weight: 700; letter-spacing: -.015em; }
 .trio p, .ways4 p { margin: 14px 0 0 !important; font-size: 16px; line-height: 1.6; color: var(--ink-soft); }
 .trades { margin: 70px 0 0 var(--col) !important; max-width: 20em; font-size: clamp(26px, 2.8vw, 42px); line-height: 1.18; font-weight: 600; letter-spacing: -.02em; }

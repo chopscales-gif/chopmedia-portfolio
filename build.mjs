@@ -90,6 +90,7 @@ export function render({ site, projects }) {
             <div><h4>Software made for you</h4><p>Client portals, booking, intake, staff screens, dispatch boards. Shaped around how your people actually work, not how a product team somewhere imagined they might.</p></div>
             <div><h4>Connections between what you already use</h4><p>Your practice software, your accounting, your inbox, your forms. Linked so a detail entered once arrives everywhere it is needed, and nobody types it twice.</p></div>
             <div><h4>AI that reads, with a person in charge</h4><p>Invoices, messages, applications and contracts read in seconds, every figure checked by arithmetic and rules, and anything uncertain held for a person. The AI does the reading. Your people make the calls.</p></div>
+            <div><h4>AI that never leaves the building</h4><p>Models and workflows that run on your own machines, behind your own walls. Client files, records and questions are never sent to anyone else's servers, and the work gets done all the same. For offices where discretion is not a preference but a duty.</p></div>
           </div></div>
         <div class="sec"><p class="idx">02</p><h3 class="sec-h">Who it's for</h3>
           <p class="trades">Law firms. Therapy practices. Accounting offices. Contractors. Service companies. City departments. <span>And the offices in between.</span></p>
