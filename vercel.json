@@ -37,5 +37,6 @@
       "destination": "https://haydenhuelskamp.com/$1",
       "permanent": true
     }
-  ]
+  ],
+  "cleanUrls": true
 }

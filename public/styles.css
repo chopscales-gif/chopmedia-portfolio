@@ -31,6 +31,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .is-page .head { background: var(--paper); }
 .brand { font-weight: 500; font-size: 17px; letter-spacing: .34em; text-transform: uppercase; text-decoration: none; margin-right: auto; white-space: nowrap; }
 .nav { display: flex; gap: 26px; align-items: center; font-size: 14px; font-weight: 500; text-transform: uppercase; }
+.nav a { text-decoration: none; }
 .nav button { text-transform: inherit; color: var(--ink-faint); transition: color .25s ease; white-space: nowrap; }
 .nav .is-on, .nav .strong, .nav button:hover { color: var(--ink); }
 .nav .gap { margin-left: 60px; }

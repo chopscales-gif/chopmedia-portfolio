@@ -171,7 +171,8 @@
     show("case"); mark(p.id); sizeCase();
   }
   // leave this demo for the one before or after it
-  function mark(hash) { try { history.replaceState(null, "", hash ? "#" + hash : location.pathname + location.search); } catch {} }
+  // The What I do view has its own address; every other view lives on the home address with a #.
+  function mark(hash) { try { history.replaceState(null, "", hash === "about" ? "/what-i-do" : hash ? "/#" + hash : "/"); } catch {} }
   function fromHash() {
     const h = location.hash.slice(1), i = P.findIndex((p) => p.id === h);
     if (i >= 0) openCase(i); else if (["about", "built", "contact"].includes(h)) show(h); else if (view !== "home") show("home");
@@ -213,7 +214,7 @@
   document.addEventListener("click", (e) => {
     if (talkOpen && !talk.contains(e.target) && e.target.id !== "contactBtn") setTalk(false);
     if (menu.classList.contains("is-open") && !menu.contains(e.target) && e.target.id !== "menuBtn") setMenu(false);
-    const go = e.target.closest("[data-go]"); if (go) show(go.dataset.go);
+    const go = e.target.closest("[data-go]"); if (go) { if (go.tagName === "A") e.preventDefault(); show(go.dataset.go); }
     const op = e.target.closest("[data-open]"); if (op) { e.preventDefault(); const i = +op.dataset.open; show("home"); setTimeout(() => openCase(i), 620); }
   });
   $("menuBtn").addEventListener("click", () => setMenu(!menu.classList.contains("is-open")));
@@ -287,6 +288,7 @@
   addEventListener("resize", fit);
 
   fit(); requestAnimationFrame(tick);
+  if (/^\/what-i-do(\.html|\/)?$/.test(location.pathname)) show("about");
   (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(() => { lines(); boot(); if (location.hash) fromHash(); });
   addEventListener("hashchange", fromHash);
 })();

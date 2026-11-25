@@ -42,6 +42,7 @@ export function sitemap(site, day) {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>${site.url}/</loc><lastmod>${day}</lastmod></url>
+  <url><loc>${site.url}/what-i-do</loc><lastmod>${day}</lastmod></url>
 </urlset>
 `;
 }
@@ -54,30 +55,42 @@ Sitemap: ${site.url}/sitemap.xml
 `;
 }
 
-export function render({ site, projects }) {
+// The What I do page has its own address so search engines can find it on its own; it is the same
+// single page, opened on that view, with its own title, description and canonical address.
+const PAGES = {
+  home: { path: "/", title: (site) => site.title, description: (site) => site.description },
+  about: {
+    path: "/what-i-do",
+    title: () => "What I do: custom software and private AI | Hayden Huelskamp",
+    description: () => "Software made for how your office works, connections between the tools you already use, and AI that reads, or never leaves the building. For any trade.",
+  },
+};
+
+export function render({ site, projects }, which = "home") {
+  const page = PAGES[which], here = site.url + page.path, title = page.title(site), description = page.description(site);
   return `<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>${escape(site.title)}</title>
-    <meta name="description" content="${escape(site.description)}">
-    <link rel="canonical" href="${escape(site.url)}/">
+    <title>${escape(title)}</title>
+    <meta name="description" content="${escape(description)}">
+    <link rel="canonical" href="${escape(here)}">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="author" content="Hayden Huelskamp">
     <meta name="theme-color" content="#ffffff">
     <meta property="og:site_name" content="Hayden Huelskamp">
-    <meta property="og:title" content="${escape(site.title)}">
-    <meta property="og:description" content="${escape(site.description)}">
+    <meta property="og:title" content="${escape(title)}">
+    <meta property="og:description" content="${escape(description)}">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="${escape(site.url)}/">
+    <meta property="og:url" content="${escape(here)}">
     <meta property="og:image" content="${escape(site.url)}/og.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Hayden Huelskamp's portfolio: a ring of working software demos">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="${escape(site.title)}">
-    <meta name="twitter:description" content="${escape(site.description)}">
+    <meta name="twitter:title" content="${escape(title)}">
+    <meta name="twitter:description" content="${escape(description)}">
     <meta name="twitter:image" content="${escape(site.url)}/og.jpg">
     <script type="application/ld+json">${structured(site, projects)}</script>
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -97,7 +110,7 @@ export function render({ site, projects }) {
           <button id="modeSlider" class="mode only-home">Slider</button>
           <button id="back" class="only-case strong">← All demos</button>
           <button id="contactBtn" class="strong only-phone">Contact</button>
-          <button id="whatBtn" class="strong gap" data-go="about">What I do</button>
+          <a id="whatBtn" class="strong gap" href="/what-i-do" data-go="about">What I do</a>
           <button id="menuBtn" class="strong" aria-expanded="false" aria-controls="menu">Menu</button>
         </nav>
       </header>
@@ -215,6 +228,7 @@ export function build() {
   mkdirSync(`${root}dist`);
   cpSync(`${root}public`, `${root}dist`, { recursive: true });
   writeFileSync(`${root}dist/index.html`, render(content));
+  writeFileSync(`${root}dist/what-i-do.html`, render(content, "about"));
   writeFileSync(`${root}dist/sitemap.xml`, sitemap(content.site, new Date().toLocaleDateString("en-CA")));
   writeFileSync(`${root}dist/robots.txt`, robots(content.site));
   return content;

@@ -107,3 +107,15 @@ test("search engines get a canonical address, a sitemap, robots rules and struct
   assert.match(sitemap(content.site, "2026-01-01"), new RegExp(`<loc>${url}/</loc>`));
   assert.match(robots(content.site), new RegExp(`Sitemap: ${url}/sitemap.xml`));
 });
+
+test("the What I do page has its own address, title and canonical link", async () => {
+  const { sitemap } = await import("./build.mjs");
+  const about = render(content, "about"), url = content.site.url;
+  assert.ok(about.includes(`<link rel="canonical" href="${url}/what-i-do">`));
+  assert.match(about, /<title>What I do/);
+  assert.ok(!about.includes(`<title>${content.site.title}</title>`));
+  assert.match(sitemap(content.site, "2026-01-01"), new RegExp(`<loc>${url}/what-i-do</loc>`));
+  assert.ok(html.includes('href="/what-i-do"'), "the header links to the page with a real link");
+  const description = /<meta name="description" content="([^"]*)">/.exec(about)[1];
+  assert.ok(description.length <= 160);
+});
