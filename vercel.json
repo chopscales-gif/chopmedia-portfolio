@@ -2,5 +2,40 @@
   "framework": null,
   "installCommand": "",
   "buildCommand": "node build.mjs",
-  "outputDirectory": "dist"
+  "outputDirectory": "dist",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.haydenhuelskamp.com"
+        }
+      ],
+      "destination": "https://haydenhuelskamp.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "haydenhuelskamp.vercel.app"
+        }
+      ],
+      "destination": "https://haydenhuelskamp.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "chopmedia.vercel.app"
+        }
+      ],
+      "destination": "https://haydenhuelskamp.com/:path*",
+      "permanent": true
+    }
+  ]
 }

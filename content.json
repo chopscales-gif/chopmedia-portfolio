@@ -1,10 +1,11 @@
 {
   "site": {
-    "title": "Hayden Huelskamp: working software demos",
-    "description": "Six demonstration builds by Hayden Huelskamp: software for a law firm, a therapy practice, an accounting office, a government contractor, a home service company and a city transportation office. Plus one live site of his own. The demos are not client work.",
+    "title": "Hayden Huelskamp: custom software, automation and private AI",
+    "description": "Hayden Huelskamp, a Utah software engineer, builds custom software, automations and private AI for businesses and public agencies. Click through working demos.",
     "email": "chopscales@gmail.com",
     "linkedin": "https://www.linkedin.com/in/hayden-huelskamp-547a86302/",
-    "github": "https://github.com/chopscales-gif"
+    "github": "https://github.com/chopscales-gif",
+    "url": "https://haydenhuelskamp.com"
   },
   "projects": [
     {

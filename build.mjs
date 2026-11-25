@@ -22,6 +22,38 @@ function plain(p, i) {
         </article>`;
 }
 
+// Structured data for search engines: who Hayden is, and the site itself.
+// JSON inside a script tag only has to keep "<" from closing the tag early.
+function structured(site, projects) {
+  const person = {
+    "@type": "Person", "@id": `${site.url}/#hayden`, name: "Hayden Huelskamp", url: `${site.url}/`,
+    jobTitle: "Software engineer", email: `mailto:${site.email}`,
+    address: { "@type": "PostalAddress", addressRegion: "UT", addressCountry: "US" },
+    sameAs: [site.linkedin, site.github],
+    knowsAbout: ["Custom software", "Workflow automation", "Software integrations", "Document AI", "Private on-premises AI", "Scheduling systems", "Client intake"],
+  };
+  const website = { "@type": "WebSite", "@id": `${site.url}/#site`, url: `${site.url}/`, name: "Hayden Huelskamp", description: site.description, publisher: { "@id": `${site.url}/#hayden` }, inLanguage: "en" };
+  const page = { "@type": "ProfilePage", "@id": `${site.url}/#page`, url: `${site.url}/`, name: site.title, isPartOf: { "@id": `${site.url}/#site` }, mainEntity: { "@id": `${site.url}/#hayden` },
+    hasPart: projects.filter((p) => p.demo).map((p) => ({ "@type": "CreativeWork", name: p.name, url: p.demo, description: p.pitch })) };
+  return JSON.stringify({ "@context": "https://schema.org", "@graph": [person, website, page] }).replace(/</g, "\\u003c");
+}
+
+export function sitemap(site, day) {
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>${site.url}/</loc><lastmod>${day}</lastmod></url>
+</urlset>
+`;
+}
+
+export function robots(site) {
+  return `User-agent: *
+Allow: /
+
+Sitemap: ${site.url}/sitemap.xml
+`;
+}
+
 export function render({ site, projects }) {
   return `<!doctype html>
 <html lang="en">
@@ -30,9 +62,24 @@ export function render({ site, projects }) {
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>${escape(site.title)}</title>
     <meta name="description" content="${escape(site.description)}">
+    <link rel="canonical" href="${escape(site.url)}/">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="author" content="Hayden Huelskamp">
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:site_name" content="Hayden Huelskamp">
     <meta property="og:title" content="${escape(site.title)}">
     <meta property="og:description" content="${escape(site.description)}">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="${escape(site.url)}/">
+    <meta property="og:image" content="${escape(site.url)}/og.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Hayden Huelskamp's portfolio: a ring of working software demos">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="${escape(site.title)}">
+    <meta name="twitter:description" content="${escape(site.description)}">
+    <meta name="twitter:image" content="${escape(site.url)}/og.jpg">
+    <script type="application/ld+json">${structured(site, projects)}</script>
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -168,6 +215,8 @@ export function build() {
   mkdirSync(`${root}dist`);
   cpSync(`${root}public`, `${root}dist`, { recursive: true });
   writeFileSync(`${root}dist/index.html`, render(content));
+  writeFileSync(`${root}dist/sitemap.xml`, sitemap(content.site, new Date().toLocaleDateString("en-CA")));
+  writeFileSync(`${root}dist/robots.txt`, robots(content.site));
   return content;
 }
 

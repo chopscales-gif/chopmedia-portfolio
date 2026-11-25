@@ -93,3 +93,17 @@ test("text from content.json is escaped", () => {
   // The script escapes every piece of text it writes into the page.
   assert.ok(!/\$\{(p|next)\.(name|for|pitch|note|alt|cat|kind|code|id|color|on|tryTitle)\b[^}]*\}/.test(script.replace(/\$\{esc\([^}]*\}/g, "")));
 });
+
+test("search engines get a canonical address, a sitemap, robots rules and structured data", async () => {
+  const { sitemap, robots } = await import("./build.mjs");
+  const url = content.site.url;
+  assert.match(url, /^https:\/\/[^/]+$/);
+  assert.ok(html.includes(`<link rel="canonical" href="${url}/">`));
+  assert.ok(html.includes(`<meta property="og:image" content="${url}/og.jpg">`));
+  assert.ok(existsSync(`${root}public/og.jpg`), "public/og.jpg is missing");
+  assert.ok(content.site.description.length <= 160, "the description is longer than search results show");
+  const ld = JSON.parse(/<script type="application\/ld\+json">(.*?)<\/script>/s.exec(html)[1]);
+  assert.deepEqual(ld["@graph"].map((x) => x["@type"]), ["Person", "WebSite", "ProfilePage"]);
+  assert.match(sitemap(content.site, "2026-01-01"), new RegExp(`<loc>${url}/</loc>`));
+  assert.match(robots(content.site), new RegExp(`Sitemap: ${url}/sitemap.xml`));
+});
