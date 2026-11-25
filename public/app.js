@@ -45,7 +45,7 @@
   });
 
   // pos: which card faces front, as a float. vel: wheel and fling momentum. aim: a card being eased to.
-  let mode = "ring", pos = 0, vel = 0, aim = null, last = 0, lean = 0, tilt = 0, open = still ? 1 : 0, openTo = still ? 1 : 0, active = -1;
+  let trail = [], mode = "ring", pos = 0, vel = 0, aim = null, last = 0, lean = 0, tilt = 0, open = still ? 1 : 0, openTo = still ? 1 : 0, active = -1;
   let R = 640, scale = 1, dragging = false, moved = 0, startX = 0, startY = 0, startPos = 0, startTilt = 0, view = "home";
 
   function fit() {
@@ -244,7 +244,7 @@
     moved = 0;
     if ((view !== "home" && view !== "case") || e.target.closest("button, .head, .talk, .menu, .demo-cta, .cta-alt")) return;
     if (view === "case" && phone()) return;
-    dragging = true; aim = null; vel = 0; startX = e.clientX; startY = e.clientY; startPos = view === "case" ? cAim : pos; startTilt = tilt; stage.classList.add("is-drag");
+    dragging = true; aim = null; vel = 0; trail = [{ t: e.timeStamp, p: pos }]; startX = e.clientX; startY = e.clientY; startPos = view === "case" ? cAim : pos; startTilt = tilt; stage.classList.add("is-drag");
   });
   addEventListener("pointermove", (e) => {
     if (!dragging) return;
@@ -253,8 +253,23 @@
     const to = mode === "list" ? startPos - dy / (GAP * scale) : startPos - dx / ((mode === "ring" ? 275 : GAP) * scale);
     if (mode === "ring") tilt = clamp(startTilt + (dy / scale) * .18, -12, 12);
     vel = to - pos; pos = to;
+    // keep the last tenth of a second of finger positions, to measure the fling on release
+    trail.push({ t: e.timeStamp, p: to }); while (trail.length > 2 && e.timeStamp - trail[0].t > 100) trail.shift();
   });
-  const drop = () => { if (!dragging) return; dragging = false; stage.classList.remove("is-drag"); if (mode !== "ring" && view === "home") { vel = 0; aim = Math.round(pos); } };
+  // On release the tiles carry on at the finger's speed (cards per frame, from the recent trail rather than
+  // the last event, which a touch screen often sends with almost no movement), then ease to a card.
+  const fling = (e) => {
+    const end = { t: e.timeStamp, p: pos }, first = trail[0];
+    if (!first || end.t - first.t < 8 || e.timeStamp - trail[trail.length - 1].t > 90) return 0;
+    return clamp(((end.p - first.p) / (end.t - first.t)) * 16.7, -.45, .45);
+  };
+  const drop = (e) => {
+    if (!dragging) return; dragging = false; stage.classList.remove("is-drag");
+    if (view !== "home") return;
+    const v = e.type === "pointercancel" ? 0 : fling(e);
+    if (mode === "ring") vel = v;
+    else { vel = 0; aim = Math.round(pos + clamp(v / (1 - .93), -3, 3)); }
+  };
   addEventListener("pointerup", drop); addEventListener("pointercancel", drop);
   addEventListener("keydown", (e) => {
     if (e.metaKey || e.ctrlKey || e.altKey) return;
